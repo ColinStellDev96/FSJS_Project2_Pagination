@@ -38,9 +38,14 @@ body{
       border-radius: 5px;
       border: 1px solid #eaeaea;
       padding: 8px 15px;
+      margin-left: 5px;
       font-size: 14px;
-      background-color: #4ba6c3;
-      color: #fff
+      background-image: linear-gradient(to right, #134f5c, #175f6f, #1b7083, #208197, #2493ac);
+      color: #fff;
+    }
+
+    .page-header .student-search button:hover {
+      background-image: linear-gradient(to left, #134f5c, #175f6f, #1b7083, #208197, #2493ac);
     }
 
 .student-list{}
@@ -48,7 +53,7 @@ body{
   .student-item{
     margin: 0 0 20px 0;
     padding: 0 0 20px 0;
-    border-bottom: 1px solid #134f5c;
+    border-bottom: 1px solid #134f5ca6;
   }
 
     .student-details{
@@ -67,11 +72,11 @@ body{
       .student-details h3{
         margin: 4px 0 2px 0;
         font-weight: bold;
-        color: #4ba6c3;
+        color: #2b5f70;
       }
 
       .student-details .email{
-        color: #888;
+        color: rgb(94, 94, 94);
         font-size: 14px;
       }
 
@@ -86,7 +91,7 @@ body{
         margin-top: 15px;
         display: block;
         font-size: 14px;
-        color: #999;
+        color: rgb(94, 94, 94);
       }
 
   .student-item:last-child{
