@@ -28,29 +28,33 @@
 
    showPage = (list, page) => {
       for (let i = 0; i < list.length; i += 1) {
-         if (i >= (pageNumber - 1) && i <= (maxStudents - 1)) {
+         if (i >= (page - 1) && i <= (maxStudents - 1)) {
             list[i].style.display = 'block';
          } else {
             list[i].style.display = 'none';
          }
-      } 
-   }
+      }
+   };
 
 // APPEND PAGE FUNCTION
 
    appendPageLinks = (list) => {
-      const pagesNum = Math.ceil(list.length / maxStudents);
       const pagination = document.createElement('div');
       pagination.className = 'pagination';
       page.appendChild(pagination);
       const pagUl = document.createElement('ul');
-      for (let i = 1; i < pagesNum.length; i += 1){
-         let liContent = `<li><a href="#">${i}</a></li>`;
-         pagUl.innerHTML = liContent;
+      const pagesNum = Math.ceil(list.length / maxStudents);
+      for (let i = 1; i < pagesNum.length; i ++){
+         let liContent = `
+            <li>
+               <a href="#">${pagesNum[i]}</a>
+            </li>
+            `;
+         pagUl.appendChild(liContent);
       }
       pagination.appendChild(pagUl);
       
-   }
+   };
 
    showPage(studentList, pageNumber);
    appendPageLinks(studentList);
