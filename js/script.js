@@ -28,7 +28,7 @@
 
    showPage = (list, page) => {
       for (let i = 0; i < list.length; i += 1) {
-         if (i >= (page - 1) && i <= (maxStudents - 1)) {
+         if (i >= 0 && i <= (maxStudents - 1)) {
             list[i].style.display = 'block';
          } else {
             list[i].style.display = 'none';
@@ -42,18 +42,34 @@
       const pagesNum = Math.ceil(list.length / maxStudents);
       const pagination = document.createElement('div');
       const pagUl = document.createElement('ul');
+
       pagination.className = 'pagination';
       page.appendChild(pagination);
       pagination.appendChild(pagUl);
-      for (let i = 1; i < pagesNum.length; i ++){
+
+      for (let i = 1; i < pagesNum + 1; i += 1){
          let liContent = `
             <li>
-               <a href="#">${pagesNum[i]}</a>
+               <a href="#">${i}</a>
             </li>
             `;
-         pagUl.innerHTML = liContent;
+         pagUl.innerHTML += liContent;
       }
-   };
 
+      const pageLinks = document.querySelectorAll('a');
+      pageLinks[0].className = "active";
+
+      for(let i = 0; i < pageLinks.length; i ++) {
+         pageLinks[i].addEventListener('click', function (event) {
+            showPage(studentList, pageNumber);
+            let active = document.querySelector('.active');
+            if (active) {
+               active.classList.remove('active');
+            }
+            event.target.className = "active";
+         })
+      }
+
+   };
    showPage(studentList, pageNumber);
    appendPageLinks(studentList);
