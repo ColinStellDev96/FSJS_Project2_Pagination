@@ -45,9 +45,12 @@
       page.appendChild(pagination);
       const pagUl = document.createElement('ul');
       for (let i = 1; i < pagesNum.length; i += 1){
-         pagUl.innerHTML = `<a href="#"><li>${i}</li></a>`
+         let liContent = `<li><a href="#">${i}</a></li>`;
+         pagUl.innerHTML = liContent;
       }
       pagination.appendChild(pagUl);
+      
    }
 
-   showPage(studentList, appendPageLinks(studentList));
+   showPage(studentList, pageNumber);
+   appendPageLinks(studentList);
