@@ -1,5 +1,5 @@
 body{
-  background-image: linear-gradient(to right top, #134f5c, #1a6f81, #2091a9, #27b4d3, #2dd9fe);;
+  background-image: linear-gradient(to right top, #e3ffff, #ccffff, #b3ffff, #97ffff, #75feff);
   font-family: Helvetica, sans-serif;
   color: #222;
 }
@@ -7,9 +7,10 @@ body{
 .page{
   margin: 50px auto;
   width: 70%;
-  background-image: linear-gradient(to left bottom, #ffffff, #eaf1ff, #c5e6ff, #8edfff, #2dd9fe);
+  background-image: linear-gradient(to left bottom, #e3ffff, #ccffff, #b3ffff, #97ffff, #75feff);
   border-radius: 5px;
   padding: 50px;
+  border: 1px solid #134f5ca6;
 }
 
 .page-header{
@@ -29,23 +30,24 @@ body{
 
     .page-header .student-search input{
       border-radius: 5px;
-      border: 1px solid #eaeaea;
+      border: 1px solid #134f5ca6;
       padding: 8px 15px;
       font-size: 14px;
     }
 
     .page-header .student-search button{
       border-radius: 5px;
-      border: 1px solid #eaeaea;
+      border: 1px solid #134f5ca6;
       padding: 8px 15px;
       margin-left: 5px;
       font-size: 14px;
-      background-image: linear-gradient(to right, #134f5c, #175f6f, #1b7083, #208197, #2493ac);
-      color: #fff;
+      background-image: linear-gradient(to right top, #e3ffff, #ccffff, #b3ffff, #97ffff, #75feff);
+      color: #134f5ca6;
     }
 
     .page-header .student-search button:hover {
-      background-image: linear-gradient(to left, #134f5c, #175f6f, #1b7083, #208197, #2493ac);
+      background-image: linear-gradient(to left bottom, #e3ffff, #ccffff, #b3ffff, #97ffff, #75feff);
+      color: #134f5c;
     }
 
 .student-list{}

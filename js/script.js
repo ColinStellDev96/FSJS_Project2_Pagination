@@ -1,6 +1,6 @@
-const page = document.querySelector('.page');
-const pageHeader = page.querySelector('.page-header');
-const studentList = page.querySelectorAll('li');
+//SELECTING MAIN ELEMENTS
+   const page = document.querySelector('.page');
+   const pageHeader = page.querySelector('.page-header');
 
 //DYNAMICALLY ADDING SEARCH INPUT TO PAGE
    //Creating The Elements
@@ -18,33 +18,36 @@ const studentList = page.querySelectorAll('li');
    searchDiv.appendChild(searchButton);
    pageHeader.appendChild(searchDiv);
 
+//PAGE & STUDENT LIST VALUES
+   const maxStudents = 10;
+   const studentList = page.querySelectorAll('li');
+   const studentListLen = studentList.length;
+   let pageNumber = 1;
 
+// SHOW PAGE FUNCTION
 
-/*** 
-   Create the `showPage` function to hide all of the items in the 
-   list except for the ten you want to show.
+   showPage = (list, page) => {
+      for (let i = 0; i < list.length; i += 1) {
+         if (i >= (pageNumber - 1) && i <= (maxStudents - 1)) {
+            list[i].style.display = 'block';
+         } else {
+            list[i].style.display = 'none';
+         }
+      } 
+   }
 
-   Pro Tips: 
-     - Keep in mind that with a list of 54 students, the last page 
-       will only display four.
-     - Remember that the first student has an index of 0.
-     - Remember that a function `parameter` goes in the parens when 
-       you initially define the function, and it acts as a variable 
-       or a placeholder to represent the actual function `argument` 
-       that will be passed into the parens later when you call or 
-       "invoke" the function 
-***/
+// APPEND PAGE FUNCTION
 
+   appendPageLinks = (list) => {
+      const pagesNum = Math.ceil(list.length / maxStudents);
+      const pagination = document.createElement('div');
+      pagination.className = 'pagination';
+      page.appendChild(pagination);
+      const pagUl = document.createElement('ul');
+      for (let i = 1; i < pagesNum.length; i += 1){
+         pagUl.innerHTML = `<a href="#"><li>${i}</li></a>`
+      }
+      pagination.appendChild(pagUl);
+   }
 
-
-
-/*** 
-   Create the `appendPageLinks function` to generate, append, and add 
-   functionality to the pagination buttons.
-***/
-
-
-
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
+   showPage(studentList, appendPageLinks(studentList));
