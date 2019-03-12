@@ -67,7 +67,7 @@
                active.classList.remove('active');
             }
             event.target.className = "active";
-         })
+         });
       }
 
    };
