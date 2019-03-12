@@ -39,21 +39,20 @@
 // APPEND PAGE FUNCTION
 
    appendPageLinks = (list) => {
+      const pagesNum = Math.ceil(list.length / maxStudents);
       const pagination = document.createElement('div');
+      const pagUl = document.createElement('ul');
       pagination.className = 'pagination';
       page.appendChild(pagination);
-      const pagUl = document.createElement('ul');
-      const pagesNum = Math.ceil(list.length / maxStudents);
+      pagination.appendChild(pagUl);
       for (let i = 1; i < pagesNum.length; i ++){
          let liContent = `
             <li>
                <a href="#">${pagesNum[i]}</a>
             </li>
             `;
-         pagUl.appendChild(liContent);
+         pagUl.innerHTML = liContent;
       }
-      pagination.appendChild(pagUl);
-      
    };
 
    showPage(studentList, pageNumber);
