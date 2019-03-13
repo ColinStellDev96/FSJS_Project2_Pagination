@@ -28,7 +28,7 @@
 
    showPage = (list, page) => {
       for (let i = 0; i < list.length; i += 1) {
-         if (i >= 0 && i <= (maxStudents - 1)) {
+         if (i >= ((page - 1) * maxStudents + 1) && i <= ((page + 1) * maxStudents - 1)) {
             list[i].style.display = 'block';
          } else {
             list[i].style.display = 'none';
@@ -54,6 +54,7 @@
             </li>
             `;
          pagUl.innerHTML += liContent;
+         pageNumber += 1;
       }
 
       const pageLinks = document.querySelectorAll('a');

@@ -1,5 +1,5 @@
 body{
-  background-image: linear-gradient(to right top, #e3ffff, #ccffff, #b3ffff, #97ffff, #75feff);
+  background-image: linear-gradient(to right top, #ffffff, #f9fbff, #eff9ff, #e1f8ff, #d2f7ff);
   font-family: Helvetica, sans-serif;
   color: #222;
 }
@@ -33,6 +33,13 @@ body{
       border: 1px solid #134f5ca6;
       padding: 8px 15px;
       font-size: 14px;
+      color: #134f5c;
+      background-image: linear-gradient(to right top, #ffffff, #f9fbff, #eff9ff, #e1f8ff, #d2f7ff);
+    }
+
+    .page-header .student-search input:focus {
+      outline: none;
+      box-shadow: 0 0 8px #134f5c;
     }
 
     .page-header .student-search button{
@@ -46,8 +53,8 @@ body{
     }
 
     .page-header .student-search button:hover {
-      background-image: linear-gradient(to left bottom, #e3ffff, #ccffff, #b3ffff, #97ffff, #75feff);
-      color: #134f5c;
+      background-image: linear-gradient(to right top, #134f5c, #165867, #186272, #1b6c7d, #1e7689);
+      color: #e3ffff
     }
 
 .student-list{}
@@ -116,11 +123,12 @@ body{
       border-radius: 5px;
       padding: 3px 8px;
       text-decoration: none;
-      color: #4ba6c3;
+      background-image: linear-gradient(to right top, #e3ffff, #ccffff, #b3ffff, #97ffff, #75feff);
+      color:  #134f5ca6;
     }
 
     .pagination li a.active,
     .pagination li a:hover{
-      background-color: #4ba6c3;
-      color: #fff;
+      background-image: linear-gradient(to right top, #134f5c, #165867, #186272, #1b6c7d, #1e7689);
+      color: #e3ffff
     }
