@@ -66,6 +66,7 @@
       for(let i = 0; i < pageLinks.length; i ++) {
          pageLinks[i].addEventListener('click', function (event) {
             showPage(studentList, pageNumber += 1);
+            console.log(pageNumber);
             let active = document.querySelector('.active');
             if (active) {
                active.classList.remove('active');
@@ -73,7 +74,6 @@
             event.target.className = "active";
          });
       }
-
    };
    showPage(studentList, pageNumber);
    appendPageLinks(studentList);
