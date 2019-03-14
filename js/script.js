@@ -77,27 +77,31 @@ appendPageLinks = (list) => {
 showPage(studentList, pageNumber);
 appendPageLinks(studentList);
 
+
 // SEARCH FUNCTION
 const input = document.querySelector('input');
 const submit = document.querySelector('button');
 
 filter = (list) => {
+   filterArray = [];
    inputValue = input.value.toUpperCase();
-   for (let i = 0; i < list; i++) {
+   for (let i = 0; i < list.length ; i++) {
       studentName = list[i].getElementsByTagName('h3')[0];
-      studentValue = studentName.value;
-      if (studentValue.toUpperCase().indexOf(inputValue) == -1) {
-         return list[i].style.display = '';
+      studentValue = studentName.textContent;
+      if (studentValue.toUpperCase().indexOf(inputValue) !== -1) {
+         filterArray.push(list[i]);
       } else {
-         return list[i].style.display = 'none';
+         list[i].style.display = 'none';
       }
-   }
+   } 
+   showPage(filterArray, pageNumber);
+   appendPageLinks(filterArray);
 }
+
 
 input.addEventListener('keyup', () => {
    filter(studentList);
 })
-submit.addEventListener('submit', (event) => {
-   event.preventDefault();
+submit.addEventListener('click', () => {
    filter(studentList);
 })
