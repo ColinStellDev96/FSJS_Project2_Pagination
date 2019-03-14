@@ -42,6 +42,10 @@ showPage = (list, page) => {
 // APPEND PAGE FUNCTION
 
 appendPageLinks = (list) => {
+   if (document.querySelector('.pagination')) {
+      remove = document.querySelector('.pagination')
+      remove.parentNode.removeChild(remove);
+   }
    const pagesNum = Math.ceil(list.length / maxStudents);
    const pagination = document.createElement('div');
    const pagUl = document.createElement('ul');
@@ -94,10 +98,9 @@ filter = (list) => {
          list[i].style.display = 'none';
       }
    } 
-   showPage(filterArray, pageNumber);
    appendPageLinks(filterArray);
+   showPage(filterArray, pageNumber);
 }
-
 
 input.addEventListener('keyup', () => {
    filter(studentList);
