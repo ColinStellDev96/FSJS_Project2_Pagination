@@ -28,9 +28,9 @@
 
    showPage = (list, page) => {
       let start = ((page - 1) * maxStudents);
-      console.log(start);
+      console.log('StartIndex:' + start);
       let end = ((start + maxStudents) - 1);
-      console.log(end);
+      console.log('End Index:' + end);
       for (let i = 0; i < list.length; i += 1) {
          if (i >= start && i <= end) {
             list[i].style.display = 'block';
@@ -65,12 +65,11 @@
 
       for(let i = 0; i < pageLinks.length; i ++) {
          pageLinks[i].addEventListener('click', function (event) {
-            showPage(studentList, pageNumber += 1);
-            console.log(pageNumber);
             let active = document.querySelector('.active');
             if (active) {
                active.classList.remove('active');
             }
+            showPage(studentList, pageNumber += 1);
             event.target.className = "active";
          });
       }
