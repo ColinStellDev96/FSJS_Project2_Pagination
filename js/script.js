@@ -43,8 +43,8 @@ showPage = (list, page) => {
 
 appendPageLinks = (list) => {
    if (document.querySelector('.pagination')) {
-      remove = document.querySelector('.pagination')
-      remove.parentNode.removeChild(remove);
+      removePag = document.querySelector('.pagination')
+      removePag.parentNode.removeChild(removePag);
    }
    const pagesNum = Math.ceil(list.length / maxStudents);
    const pagination = document.createElement('div');
@@ -86,22 +86,24 @@ appendPageLinks(studentList);
 const input = document.querySelector('input');
 const submit = document.querySelector('button');
 
-filter = (list) => {
+const filter = (list) => {
    const filterArray = [];
    inputValue = input.value.toUpperCase();
    for (let i = 0; i < list.length ; i++) {
-      studentName = list[i].getElementsByTagName('h3')[0];
-      studentValue = studentName.textContent;
-      console.log(studentValue.toUpperCase);
-      if (studentValue.toUpperCase().indexOf(inputValue) === 0) {
-         noStudent = document.createElement('h2');
+      let studentName = list[i].getElementsByTagName('h3')[0];
+      let studentValue = studentName.textContent;
+      let filter = studentValue.toUpperCase().indexOf(inputValue)
+      console.log(filter);
+      if (!filter) {
+         let noStudent = document.createElement('h2');
+         noStudent.className = "no-message";
          noStudent.innerHTML = "No Student Results Found";
          page.appendChild(noStudent);
-      } else if (studentValue.toUpperCase().indexOf(inputValue) !== -1) {
+      } else if (filter !== -1) {
          filterArray.push(list[i]);
       } else {
          list[i].style.display = 'none';
-      }
+      } 
    }
    appendPageLinks(filterArray);
    showPage(filterArray, pageNumber);
@@ -113,3 +115,9 @@ input.addEventListener('keyup', () => {
 submit.addEventListener('click', () => {
    filter(studentList);
 })
+
+// if (filter === 0) {
+//    let noStudent = document.createElement('h2');
+//    noStudent.innerHTML = "No Student Results Found";
+//    page.appendChild(noStudent);
+// }
