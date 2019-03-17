@@ -64,9 +64,9 @@ appendPageLinks = (list) => {
    }
 
    const pageLinks = document.querySelectorAll('a');
-   pageLinks[0].className = "active";
 
    for (let i = 0; i < pageLinks.length; i++) {
+      pageLinks[0].className = "active";
       pageLinks[i].addEventListener('click', function (event) {
          let active = document.querySelector('.active');
          if (active) {
@@ -87,12 +87,15 @@ const input = document.querySelector('input');
 const submit = document.querySelector('button');
 
 filter = (list) => {
-   filterArray = [];
+   const filterArray = [];
    inputValue = input.value.toUpperCase();
    for (let i = 0; i < list.length ; i++) {
       studentName = list[i].getElementsByTagName('h3')[0];
       studentValue = studentName.textContent;
-      if (studentValue.toUpperCase().indexOf(inputValue) !== -1) {
+      console.log(studentValue.toUpperCase);
+      if (studentValue.toUpperCase().indexOf(inputValue) === 0) {
+         page.innerHTML(`<h2>No Students Matched Search Results</h2>`);
+      } else if (studentValue.toUpperCase().indexOf(inputValue) !== -1) {
          filterArray.push(list[i]);
       } else {
          list[i].style.display = 'none';
