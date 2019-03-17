@@ -94,13 +94,15 @@ filter = (list) => {
       studentValue = studentName.textContent;
       console.log(studentValue.toUpperCase);
       if (studentValue.toUpperCase().indexOf(inputValue) === 0) {
-         page.appendChild(`<h2>No Students Matched Search Results</h2>`);
+         noStudent = document.createElement('h2');
+         noStudent.innerHTML = "No Student Results Found";
+         page.appendChild(noStudent);
       } else if (studentValue.toUpperCase().indexOf(inputValue) !== -1) {
          filterArray.push(list[i]);
       } else {
          list[i].style.display = 'none';
       }
-   } 
+   }
    appendPageLinks(filterArray);
    showPage(filterArray, pageNumber);
 }
