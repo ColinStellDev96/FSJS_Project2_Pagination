@@ -88,20 +88,30 @@ const submit = document.querySelector('button');
 
 const filterSearch = (list) => {
    const filterArray = [];
-   inputValue = input.value.toUpperCase();
+   inputValue = input.value.toLowerCase();
    for (let i = 0; i < list.length ; i++) {
       let studentName = list[i].getElementsByTagName('h3')[0];
       let studentValue = studentName.textContent.toLowerCase();
-      let filter = studentValue.toUpperCase().indexOf(inputValue);
-      console.log(filter);
+      let filter = studentValue.toLowerCase().indexOf(inputValue);
+      
       if (filter !== -1) {
          filterArray.push(list[i]);
       } else {
          list[i].style.display = 'none';
       }
+
+      // if (filterArray.length = 0) {
+      // let noStudent = document.createElement('h2');
+      // noStudent.className = "no-message";
+      // noStudent.innerHTML = "No Student Results Found";
+      // page.appendChild(noStudent);
+      // }
+
+      showPage(filterArray, pageNumber);
+      appendPageLinks(filterArray);
    }
-   appendPageLinks(filterArray);
-   showPage(filterArray, pageNumber);
+   
+   
 }
 
 input.addEventListener('keyup', () => {
@@ -117,9 +127,4 @@ submit.addEventListener('click', () => {
 //    page.appendChild(noStudent);
 // }
 
-// //else if (filterArray.length = 0) {
-//    let noStudent = document.createElement('h2');
-//    noStudent.className = "no-message";
-//    noStudent.innerHTML = "No Student Results Found";
-//    page.appendChild(noStudent);
-// } 
+// //
