@@ -94,7 +94,7 @@ filter = (list) => {
       studentValue = studentName.textContent;
       console.log(studentValue.toUpperCase);
       if (studentValue.toUpperCase().indexOf(inputValue) === 0) {
-         page.innerHTML(`<h2>No Students Matched Search Results</h2>`);
+         page.appendChild(`<h2>No Students Matched Search Results</h2>`);
       } else if (studentValue.toUpperCase().indexOf(inputValue) !== -1) {
          filterArray.push(list[i]);
       } else {
