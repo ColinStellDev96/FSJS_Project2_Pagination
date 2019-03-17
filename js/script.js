@@ -86,34 +86,29 @@ appendPageLinks(studentList);
 const input = document.querySelector('input');
 const submit = document.querySelector('button');
 
-const filter = (list) => {
+const filterSearch = (list) => {
    const filterArray = [];
    inputValue = input.value.toUpperCase();
    for (let i = 0; i < list.length ; i++) {
       let studentName = list[i].getElementsByTagName('h3')[0];
-      let studentValue = studentName.textContent;
-      let filter = studentValue.toUpperCase().indexOf(inputValue)
+      let studentValue = studentName.textContent.toLowerCase();
+      let filter = studentValue.toUpperCase().indexOf(inputValue);
       console.log(filter);
-      if (!filter) {
-         let noStudent = document.createElement('h2');
-         noStudent.className = "no-message";
-         noStudent.innerHTML = "No Student Results Found";
-         page.appendChild(noStudent);
-      } else if (filter !== -1) {
+      if (filter !== -1) {
          filterArray.push(list[i]);
       } else {
          list[i].style.display = 'none';
-      } 
+      }
    }
    appendPageLinks(filterArray);
    showPage(filterArray, pageNumber);
 }
 
 input.addEventListener('keyup', () => {
-   filter(studentList);
+   filterSearch(studentList);
 })
 submit.addEventListener('click', () => {
-   filter(studentList);
+   filterSearch(studentList);
 })
 
 // if (filter === 0) {
@@ -121,3 +116,10 @@ submit.addEventListener('click', () => {
 //    noStudent.innerHTML = "No Student Results Found";
 //    page.appendChild(noStudent);
 // }
+
+// //else if (filterArray.length = 0) {
+//    let noStudent = document.createElement('h2');
+//    noStudent.className = "no-message";
+//    noStudent.innerHTML = "No Student Results Found";
+//    page.appendChild(noStudent);
+// } 
