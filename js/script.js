@@ -25,7 +25,6 @@
    let pageNumber = 1;
 
 // SHOW PAGE FUNCTION
-
    showPage = (list, page) => {
       let start = ((page - 1) * maxStudents);
       let end = ((start + maxStudents) - 1);
@@ -41,16 +40,19 @@
 
 // APPEND PAGE FUNCTION
    appendPageLinks = (list) => {
+      //check's if pagination is on page each time the function is called, this prevents replication of pagination numbers
       if (document.querySelector('.pagination')) {
          removePag = document.querySelector('.pagination')
          removePag.parentNode.removeChild(removePag);
       }
+
       const pagesNum = Math.ceil(list.length / maxStudents);
       const pagination = document.createElement('div');
       const pagUl = document.createElement('ul');
       pagination.className = 'pagination';
       page.appendChild(pagination);
       pagination.appendChild(pagUl);
+      // appending li elements based on number of pages needed
       for (let i = 1; i < pagesNum + 1; i += 1) {
          let liContent = `
                <li>
@@ -59,6 +61,7 @@
                `;
          pagUl.innerHTML += liContent;
       };
+      // adding event listeners to each pagination link and moving 'active' class around based on link clicked
       const pageLinks = document.querySelectorAll('a');
       for (let i = 0; i < pageLinks.length; i++) {
          pageLinks[0].className = "active";
@@ -72,16 +75,20 @@
          });
       }
    };
+   // shows the initial student list and pagination upon first page load
    showPage(studentList, pageNumber);
    appendPageLinks(studentList);
 
 // SEARCH FUNCTION
    const input = document.querySelector('input');
    const submit = document.querySelector('button');
+   // filter function that takes one parameter, a list of students
    const filterSearch = (list) => {
+      // empty arrays for matching students and not matching students
       const matchArray = [];
       const noMatchArray = [];
       inputValue = input.value.toLowerCase();
+      // looping through list and pushing matching students into empty array and not matching students into empty array
       for (let i = 0; i < list.length ; i++) {
          let studentName = list[i].getElementsByTagName('h3')[0];
          let studentValue = studentName.textContent.toLowerCase();
@@ -92,6 +99,7 @@
             list[i].style.display = 'none';
             noMatchArray.push(list[i]);
          }
+         // if there are no matches, a message is appended to the page & removed once a user starts searching again.
          if (noMatchArray.length === list.length) {
             let noStudent = document.createElement('h2');
             noStudent.className = "no-message";
@@ -101,14 +109,17 @@
             removeMessage = document.querySelector('.no-message');
             removeMessage.parentNode.removeChild(removeMessage);
          }
+         // calling the showPage and appendPageLinks functions with the new matchArray.
          showPage(matchArray, pageNumber);
          appendPageLinks(matchArray);
       }
    };
 
+// EVENT LISTENERS
    input.addEventListener('keyup', () => {
       filterSearch(studentList);
    });
+   // submit event listener will work if you disable the input event listener 
    submit.addEventListener('click', () => {
       filterSearch(studentList);
    });
