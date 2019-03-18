@@ -105,7 +105,7 @@ const filterSearch = (list) => {
       if (noMatchArray.length === list.length) {
          let noStudent = document.createElement('h2');
          noStudent.className = "no-message";
-         noStudent.innerHTML = "No Student Results Found";
+         noStudent.innerHTML = "No Student Results Found!";
          page.appendChild(noStudent);
       } else if (document.querySelector('.no-message')) {
          removeMessage = document.querySelector('.no-message');

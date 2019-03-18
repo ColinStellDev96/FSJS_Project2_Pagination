@@ -28,6 +28,12 @@ body{
     float: right;
   }
 
+  .no-message {
+    text-align: center;
+    color: #134f5c;
+    text-transform: uppercase;
+  }
+
     .page-header .student-search input{
       border-radius: 5px;
       border: 1px solid #134f5ca6;
