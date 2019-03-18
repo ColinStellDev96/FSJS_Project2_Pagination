@@ -61,7 +61,7 @@ appendPageLinks = (list) => {
             </li>
             `;
       pagUl.innerHTML += liContent;
-   }
+   };
 
    const pageLinks = document.querySelectorAll('a');
 
@@ -87,7 +87,8 @@ const input = document.querySelector('input');
 const submit = document.querySelector('button');
 
 const filterSearch = (list) => {
-   const filterArray = [];
+   const matchArray = [];
+   const noMatchArray = [];
    inputValue = input.value.toLowerCase();
    for (let i = 0; i < list.length ; i++) {
       let studentName = list[i].getElementsByTagName('h3')[0];
@@ -95,36 +96,32 @@ const filterSearch = (list) => {
       let filter = studentValue.toLowerCase().indexOf(inputValue);
       
       if (filter !== -1) {
-         filterArray.push(list[i]);
+         matchArray.push(list[i]);
       } else {
          list[i].style.display = 'none';
+         noMatchArray.push(list[i]);
       }
 
-      // if (filterArray.length = 0) {
-      // let noStudent = document.createElement('h2');
-      // noStudent.className = "no-message";
-      // noStudent.innerHTML = "No Student Results Found";
-      // page.appendChild(noStudent);
-      // }
+      if (noMatchArray.length === list.length) {
+         let noStudent = document.createElement('h2');
+         noStudent.className = "no-message";
+         noStudent.innerHTML = "No Student Results Found";
+         page.appendChild(noStudent);
+      } else if (document.querySelector('.no-message')) {
+         removeMessage = document.querySelector('.no-message');
+         removeMessage.parentNode.removeChild(removeMessage);
+      }
 
-      showPage(filterArray, pageNumber);
-      appendPageLinks(filterArray);
+      showPage(matchArray, pageNumber);
+      appendPageLinks(matchArray);
    }
    
    
-}
+};
 
 input.addEventListener('keyup', () => {
    filterSearch(studentList);
-})
+});
 submit.addEventListener('click', () => {
    filterSearch(studentList);
-})
-
-// if (filter === 0) {
-//    let noStudent = document.createElement('h2');
-//    noStudent.innerHTML = "No Student Results Found";
-//    page.appendChild(noStudent);
-// }
-
-// //
+});
